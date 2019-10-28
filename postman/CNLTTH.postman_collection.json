@@ -1,0 +1,161 @@
+{
+	"info": {
+		"_postman_id": "7349e7a7-9844-4425-9a46-a3bea621cca2",
+		"name": "CNLTTH",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get ",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:6969/api/auth/login",
+					"host": [
+						"localhost"
+					],
+					"port": "6969",
+					"path": [
+						"api",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "email",
+							"value": "a5lhp.swift@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "123456Aa@",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:6969/api/auth/login",
+					"host": [
+						"localhost"
+					],
+					"port": "6969",
+					"path": [
+						"api",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Logout",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:6969/api/auth/logout",
+					"host": [
+						"localhost"
+					],
+					"port": "6969",
+					"path": [
+						"api",
+						"auth",
+						"logout"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Tuyền Luis",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "a5lhp.swift@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "123456Aa@",
+							"type": "text"
+						},
+						{
+							"key": "phone",
+							"value": "0963566703",
+							"type": "text"
+						},
+						{
+							"key": "address",
+							"value": "Cẩm Phả, Quảng Ninh",
+							"type": "text"
+						},
+						{
+							"key": "confirmPassword",
+							"value": "123456Aa@",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:6969/api/auth/register",
+					"host": [
+						"localhost"
+					],
+					"port": "6969",
+					"path": [
+						"api",
+						"auth",
+						"register"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
