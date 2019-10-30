@@ -8,6 +8,6 @@ module.exports = {
     return bcrypt.hashSync(password, salt)
   },
   comparePassword: (password, hashPassword) => {
-    return bcrypt.compare(password, hashPassword)
+    return bcrypt.compareSync(password, hashPassword)
   }
 }
