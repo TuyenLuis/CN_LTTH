@@ -22,7 +22,10 @@ const app = express()
 sessionConfig.config(app)
 
 // Use Cors
-app.use(cors())
+app.use(cors({
+  credentials: true,
+  origin: true
+}))
 
 // Enable post data for request
 app.use(bodyParser.urlencoded({ extended: true }))
