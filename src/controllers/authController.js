@@ -40,7 +40,7 @@ const register = async (req, res) => {
       errorArr.push(err.msg)
     })
 
-    return res.status(500).send({ errors })
+    return res.status(500).send({ errorArr })
   }
 
   try {
