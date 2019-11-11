@@ -7,7 +7,7 @@ module.exports = {
   IMAGE: {
     DIRECTORY: 'src/public/images',
     SIZE: 1048576 * 2, // 2 MB
-    TYPE: ['image/png', 'image/jqg', 'image/jpeg'],
+    TYPE: ['image/png', 'image/jpg', 'image/jpeg'],
     LIMIT: 15,
     PUBLIC: 'src/public/'
   },
