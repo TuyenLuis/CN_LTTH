@@ -15,7 +15,6 @@ const authRouter = express.Router()
 authRouter.post('/login', isLoggedOut, checkConnectDB, authController.loginLocal)
 
 authRouter.get('/login', (req, res) => {
-  console.log(req.user)
   res.send("Test API GET login")
 })
 

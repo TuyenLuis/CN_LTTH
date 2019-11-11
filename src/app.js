@@ -27,6 +27,9 @@ app.use(cors({
   origin: true
 }))
 
+// Public image to display
+app.use(express.static('./src/public'))
+
 // Enable post data for request
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())

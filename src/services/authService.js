@@ -8,7 +8,12 @@ const getCustomerInfo = (customerId, pool) => {
     try {
       let userResult = await pool.request()
         .input('Id', sql.Int, customerId)
-        .query('SELECT Id, Name, Phone, Email, [Address], AccountType, [Status], RegisteredDate, LastLoginDate FROM dbo.Customers WHERE Id = @Id')
+        .query(`
+          SELECT C.Id, C.Name, C.Phone, C.Email, C.[Address], C.AccountType, C.[Status], C.RegisteredDate, C.LastLoginDate, P.Id as ProviderId
+          FROM dbo.Customers C
+          LEFT JOIN dbo.Providers P ON C.Id = P.Owner
+          WHERE C.Id = @Id
+        `)
       let user = userResult.recordset[0]
 
       let rolesResult = await pool.request()
@@ -66,7 +71,7 @@ const register = ({email, name, password, phone, address}, pool) => {
       if (newCustomer.output.Id) {
         return resolve(newCustomer.output.Id)
       } else {
-        return reject(transError)
+        return reject(transError.register_failed)
       }
     } catch (error) {
       return reject(error)
