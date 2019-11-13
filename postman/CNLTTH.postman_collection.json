@@ -196,6 +196,27 @@
 			"response": []
 		},
 		{
+			"name": "Get product details",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:6969/api/product/product-details/411",
+					"host": [
+						"localhost"
+					],
+					"port": "6969",
+					"path": [
+						"api",
+						"product",
+						"product-details",
+						"411"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "Add new product",
 			"request": {
 				"method": "POST",
@@ -625,6 +646,47 @@
 						"api",
 						"provider",
 						"register-provider"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all catalogs",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:6969/api/catalog/list-catalogs",
+					"host": [
+						"localhost"
+					],
+					"port": "6969",
+					"path": [
+						"api",
+						"catalog",
+						"list-catalogs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all products by catalog",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:6969/api/catalog/list-products/27",
+					"host": [
+						"localhost"
+					],
+					"port": "6969",
+					"path": [
+						"api",
+						"catalog",
+						"list-products",
+						"27"
 					]
 				}
 			},
