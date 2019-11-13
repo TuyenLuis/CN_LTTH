@@ -677,7 +677,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:6969/api/catalog/list-products/27",
+					"raw": "localhost:6969/api/catalog/list-products/37",
 					"host": [
 						"localhost"
 					],
@@ -686,7 +686,28 @@
 						"api",
 						"catalog",
 						"list-products",
-						"27"
+						"37"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all products by provider",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:6969/api/provider/list-products/1",
+					"host": [
+						"localhost"
+					],
+					"port": "6969",
+					"path": [
+						"api",
+						"provider",
+						"list-products",
+						"1"
 					]
 				}
 			},
