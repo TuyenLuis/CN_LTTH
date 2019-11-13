@@ -34,7 +34,9 @@ export const transError = {
   product_id_empty: 'Mã sản phẩm là bắt buộc.',
   product_id_not_existed: 'Không tìm thấy sản phẩm có mã #productId. Hãy kiểm tra lại.',
   catalog_id_empty: 'Mã loại sản phẩm là bắt buộc.',
-  catalog_id_not_existed: 'Không tìm thấy sản phẩm có mã loại sản phẩm #catalogId. Hãy kiểm tra lại.'
+  catalog_id_not_existed: 'Không tìm thấy sản phẩm có mã loại sản phẩm #catalogId. Hãy kiểm tra lại.',
+  provider_id_empty: 'Mã nhà cung cấp là bắt buộc.',
+  provider_id_not_existed: 'Không tìm thấy sản phẩm có mã nhà cung cấp #providerId. Hãy kiểm tra lại.'
 }
 
 export const transSuccess = {

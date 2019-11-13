@@ -68,11 +68,11 @@ const getProductDataById = (pool, productId) => {
             ,P.[PromotionPercent]
             ,P.[TopFeature]
             ,P.[PublishDate]
-          ,C.[Name] AS 'Brand'
-          ,pv.[Name] AS 'Provider'
-          ,pv.[Email] AS 'ProviderEmail'
-          ,pv.[Phone] AS 'ProviderPhone'
-          ,pv.[Address] AS 'ProviderAddress'
+            ,C.[Name] AS 'Brand'
+            ,pv.[Name] AS 'Provider'
+            ,pv.[Email] AS 'ProviderEmail'
+            ,pv.[Phone] AS 'ProviderPhone'
+            ,pv.[Address] AS 'ProviderAddress'
         FROM dbo.Products P
         INNER JOIN dbo.Catalogs C ON C.Id = P.CatalogId
         LEFT JOIN dbo.Providers Pv ON Pv.Id = P.ProviderId
