@@ -32,7 +32,9 @@ export const transError = {
   add_product: 'Thêm sản phẩm mới thất bại.',
   register_provider: 'Đăng ký nhà cung cấp không thành công.',
   product_id_empty: 'Mã sản phẩm là bắt buộc.',
-  product_id_not_existed: 'Không tìm thấy sản phẩm có mã #productId. Hãy kiểm tra lại.'
+  product_id_not_existed: 'Không tìm thấy sản phẩm có mã #productId. Hãy kiểm tra lại.',
+  catalog_id_empty: 'Mã loại sản phẩm là bắt buộc.',
+  catalog_id_not_existed: 'Không tìm thấy sản phẩm có mã loại sản phẩm #catalogId. Hãy kiểm tra lại.'
 }
 
 export const transSuccess = {
