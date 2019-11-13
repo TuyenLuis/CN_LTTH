@@ -47,7 +47,7 @@ const imageUpload = promisify(imageUploadFile)
 const getListProduct = async (req, res) => {
   try {
     let pageNumber = req.query.page || 1
-    let listProduct = await productService.getProductPerPage(req.pool, NUMBER_PRODUCT_PER_PAGE, pageNumber)
+    let { listProduct, pageAmount } = await productService.getProductPerPage(req.pool, NUMBER_PRODUCT_PER_PAGE, pageNumber)
     listProduct = await Promise.all(_.map(listProduct, async product => {
       let listProductLinked = await productService.getProductLinked(req.pool, product.Id)
       let productImage = product.Image
@@ -70,7 +70,11 @@ const getListProduct = async (req, res) => {
 
     
     return res.status(200).send({
-      data: listProduct
+      data: {
+        currentPage: +pageNumber,
+        pageAmount,
+        listProduct
+      }
     })
   } catch (err) {
     return res.status(500).send({ err })
@@ -244,10 +248,53 @@ const updateProductExtendsData = async (req, res) => {
   }
 }
 
+const getProductDetailsById = async (req, res) => {
+  try {
+    let productId = req.params.productId
+    if (!productId) {
+      return res.status(500).send({ err: transError.product_id_empty })
+    }
+
+    let productDetail = await productService.getProductDataById(req.pool, productId)
+    if (!productDetail) {
+      return res.status(200).send({
+        message: transError.product_id_not_existed.replace('#productId', productId),
+        data: []
+      })
+    }
+
+    let listProductLinked = await productService.getProductLinked(req.pool, productDetail.Id)
+    let productImage = productDetail.Image
+    let productImageList = JSON.parse(productDetail.ImageList)
+
+    productDetail.listProductLinked = listProductLinked
+    if (productImage.indexOf('images/') === 0) {
+      productDetail.Image = `${config.BACKEND.HOST}${productDetail.Image}`
+    }
+    if (productImageList.length) {
+      productImageList = _.map(productImageList, image => {
+        if (image.medium_url && image.medium_url.indexOf('images/') === 0) {
+          image.medium_url = `${config.BACKEND.HOST}${image.medium_url}`
+        }
+        return image
+      })
+      productDetail.ImageList = [...productImageList]
+    }
+
+    return res.status(200).send({
+      message: 'success',
+      data: productDetail
+    })
+  } catch (err) {
+    return res.status(500).send({ err })
+  }
+}
+
 module.exports = {
   getListProduct,
   addNewProduct,
   removeProduct,
   updateProductNormalData,
-  updateProductExtendsData
+  updateProductExtendsData,
+  getProductDetailsById
 }
