@@ -22,7 +22,9 @@ export const transError = {
   avatar_type: 'Kiểu file không hợp lệ, chỉ chấp nhận JPG hoặc PNG.',
   image_size: 'Kích thước ảnh tối đa là 2MB.',
   limit_file_upload: 'Số lượng file upload tối đa là 15.',
-  add_product: 'Thêm sản phẩm mới thất bại.'
+  add_product: 'Thêm sản phẩm mới thất bại.',
+  product_id_empty: 'Mã sản phẩm là bắt buộc.',
+  product_id_not_existed: 'Không tìm thấy sản phẩm có mã #productId. Hãy kiểm tra lại.'
 }
 
 export const transSuccess = {

@@ -8,9 +8,13 @@ const getProductPerPage = (pool, pageSize, pageNumber = 1) => {
       let productResult = await pool.request()
       .input('pageSize', sql.Int, pageSize)
       .input('pageNumber', sql.Int, pageNumber)
+      .output('pageAmount', sql.Int)
       .execute('dbo.prc_Select_GetListProductPaging')
 
-      resolve(productResult.recordset)
+      resolve({
+        listProduct: productResult.recordset,
+        pageAmount: productResult.output.pageAmount
+      })
     } catch (error) {
       reject(error)
     }

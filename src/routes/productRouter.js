@@ -18,4 +18,6 @@ productRouter.put('/update-product-normal', isLoggedIn, checkConnectDB, isAdmin,
 
 productRouter.put('/update-product-extends', isLoggedIn, checkConnectDB, isAdmin, productController.updateProductExtendsData)
 
+productRouter.get('/product-details/:productId', checkConnectDB, productController.getProductDetailsById)
+
 module.exports = productRouter
