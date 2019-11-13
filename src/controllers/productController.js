@@ -68,7 +68,6 @@ const getListProduct = async (req, res) => {
       return Object.assign({}, product, { listProductLinked })
     }))
 
-    
     return res.status(200).send({
       data: {
         currentPage: +pageNumber,
