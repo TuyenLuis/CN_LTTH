@@ -9,7 +9,7 @@ import providerValidation from './../validation/providerValidation'
 const providerRouter = express.Router()
 
 
-providerRouter.get('/list-providers', isLoggedIn, checkConnectDB, isSupperAdmin, providerController.getListProviders)
+providerRouter.get('/list-providers', checkConnectDB, providerController.getListProviders)
 
 providerRouter.post('/register-provider', isLoggedIn, checkConnectDB, isCustomer, providerValidation.registerProvider, providerController.registerProvider)
 

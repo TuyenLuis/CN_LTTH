@@ -10,6 +10,8 @@ const productRouter = express.Router()
 
 productRouter.get('/list-product', checkConnectDB, productController.getListProduct)
 
+productRouter.get('/list-catalog', checkConnectDB, productController.getListCatalog)
+
 productRouter.post('/add-new-product', isLoggedIn, checkConnectDB, isAdmin, productController.addNewProduct)
 
 productRouter.delete('/delete-product', isLoggedIn, checkConnectDB, isAdmin, productController.removeProduct)
