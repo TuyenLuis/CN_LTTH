@@ -14,6 +14,12 @@ module.exports = {
   ERROR_CODE: {
     LIMIT_UNEXPECTED_FILE: 'LIMIT_UNEXPECTED_FILE'
   },
+  VN_PAY_SANDBOX: {
+    ORDER_TYPE: 'billpayment',
+    BANK_CODE: 'NCB',
+    DESCRIPTION: 'Thanh toan don hang thoi gian: $timeStamp',
+    LANGUAGE: 'vn'
+  },
   BACKEND: {
     HOST: 'http://localhost:6969/'
   },
