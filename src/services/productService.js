@@ -21,6 +21,26 @@ const getProductPerPage = (pool, pageSize, pageNumber = 1) => {
   })
 }
 
+const getListCatalog = pool => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      let catalogResult = await pool.request()
+      .query(`
+        SELECT
+          Id,
+          Name,
+          Amount
+        FROM Catalogs
+        WHERE [Visibility] = 1
+      `)
+
+      resolve(catalogResult.recordset)
+    } catch (error) {
+      reject(error)
+    }
+  })
+}
+
 const getProductLinked = (pool, productId) => {
   return new Promise(async (resolve, reject) => {
     try {
@@ -192,5 +212,6 @@ module.exports = {
   removeProduct,
   updateProductNormalData,
   getProductDataById,
-  updateProductExtendsData
+  updateProductExtendsData,
+  getListCatalog
 }

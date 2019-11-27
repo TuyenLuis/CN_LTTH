@@ -80,6 +80,17 @@ const getListProduct = async (req, res) => {
   }
 }
 
+const getListCatalog = async (req, res) => {
+  try {
+    let listCatalogs = await productService.getListCatalog(req.pool)
+    return res.status(200).send({
+      data: listCatalogs
+    })
+  } catch (err) {
+    return res.status(500).send({ err })
+  }
+}
+
 const addNewProduct = async (req, res) => {
   let errors = []
   try {
@@ -295,5 +306,6 @@ module.exports = {
   removeProduct,
   updateProductNormalData,
   updateProductExtendsData,
-  getProductDetailsById
+  getProductDetailsById,
+  getListCatalog
 }
