@@ -12,6 +12,6 @@ export const pool = new sql.ConnectionPool({
     min: 0,
     idleTimeoutMillis: 30000
   },
-  connectionTimeout: 30000,
-  requestTimeout: 30000
+  connectionTimeout: 50000,
+  requestTimeout: 50000
 }).connect()

@@ -13,6 +13,6 @@ providerRouter.get('/list-providers', checkConnectDB, providerController.getList
 
 providerRouter.post('/register-provider', isLoggedIn, checkConnectDB, isCustomer, providerValidation.registerProvider, providerController.registerProvider)
 
-providerRouter.get('/list-products/:providerId', isLoggedIn, checkConnectDB, isSupperAdmin, providerController.getListProductsByProvider)
+providerRouter.get('/list-products/:providerId', checkConnectDB, providerController.getListProductsByProvider)
 
 module.exports = providerRouter
