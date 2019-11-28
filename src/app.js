@@ -8,6 +8,7 @@ import bodyParser from 'body-parser'
 import cookieParser from 'cookie-parser'
 import connectFlash from 'connect-flash'
 import cors from 'cors'
+import expressEjsExtend from 'express-ejs-extend'
 
 /**
  * Import defined modules
@@ -44,7 +45,15 @@ app.use(connectFlash())
 app.use(passport.initialize())
 app.use(passport.session())
 
+app.engine('ejs', expressEjsExtend)
+app.set('view engine', 'ejs')
+app.set('views', './src/views')
+
+
 // Init all routes
+app.get('/', (req, res) => {
+  return res.render('index')
+})
 app.use("/api", apiRouter)
 
 app.listen(process.env.APP_PORT, process.env.APP_HOST, () => {

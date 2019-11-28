@@ -234,10 +234,9 @@
 						"disabled": true
 					},
 					{
-						"key": "",
-						"value": "",
-						"type": "text",
-						"disabled": true
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7IklkIjoxLCJOYW1lIjoiVHV54buBbiBMdWlzIiwiUGhvbmUiOiIwOTYzNTY2NzAzIiwiRW1haWwiOiJhNWxocDEuc3dpZnRAZ21haWwuY29tIiwiQWRkcmVzcyI6IlF14bqjbmcgTmluaCIsIkFjY291bnRUeXBlIjoibG9jYWwiLCJTdGF0dXMiOjEsIlJlZ2lzdGVyZWREYXRlIjoiMjAxOS0xMC0yOFQxMjozNzo1Ny43NzdaIiwiTGFzdExvZ2luRGF0ZSI6IjIwMTktMTEtMjhUMTE6MDg6NDAuODczWiIsIlByb3ZpZGVySWQiOjIsInJvbGVzIjpbeyJOYW1lIjoiQWRtaW4ifSx7Ik5hbWUiOiJDdXN0b21lciJ9XX0sImlhdCI6MTU3NDk1Nzg5MiwiZXhwIjoxNTc0OTYxNDkyfQ.8asnHbxefehHtq6mZWPDBu_j4kAq7CeeAkEtgtWxPlo",
+						"type": "text"
 					}
 				],
 				"body": {
@@ -245,37 +244,37 @@
 					"formdata": [
 						{
 							"key": "name",
-							"value": "Redmi K20 Pro, 8GB RAM, 64 GB ROM - Test",
+							"value": "Redmi K20, 6GB RAM, 64 GB ROM - Test",
 							"type": "text"
 						},
 						{
 							"key": "price",
-							"value": "8700000",
+							"value": "65000000",
 							"type": "text"
 						},
 						{
 							"key": "sku",
-							"value": "0512987565329",
+							"value": "0512987325329",
 							"type": "text"
 						},
 						{
 							"key": "promotionPrice",
-							"value": "8100000",
+							"value": "63000000",
 							"type": "text"
 						},
 						{
 							"key": "content",
-							"value": "Mình thích con này lắm nhưng vẫn chưa có tiền mua hihi",
+							"value": "Đây là sản phẩm mình test",
 							"type": "text"
 						},
 						{
 							"key": "amount",
-							"value": "45",
+							"value": "20",
 							"type": "text"
 						},
 						{
 							"key": "topFeature",
-							"value": "Chip ngon lắm ạ",
+							"value": "Chip cũng khá ngon nhưng không bằng K20 Pro",
 							"type": "text"
 						},
 						{
@@ -287,19 +286,19 @@
 						{
 							"key": "image",
 							"type": "file",
-							"src": "3.jpg"
+							"src": "misthy-1.jpg"
 						},
 						{
 							"key": "imageList",
 							"type": "file",
 							"src": [
+								"72488564_2871992176163331_7188159057310515200_n.png",
+								"72670327_2871988492830366_1422839282669715456_n.png",
+								"72853200_2930593140303234_456081765413421056_n.jpg",
+								"74830293_756147814890350_8983663491088908288_n.jpg",
+								"77172092_172781730536620_4588848461838811136_n.jpg",
 								"car-1.jpg",
-								"car-2.jpg",
-								"car-3.jpg",
-								"car-4.jpg",
-								"car-5.jpg",
-								"misthy-1.jpg",
-								"misthy-2.jpg"
+								"car-2.jpg"
 							]
 						}
 					]
@@ -564,6 +563,11 @@
 						"name": "Content-Type",
 						"value": "application/x-www-form-urlencoded",
 						"type": "text"
+					},
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7IklkIjoxLCJOYW1lIjoiVHV54buBbiBMdWlzIiwiUGhvbmUiOiIwOTYzNTY2NzAzIiwiRW1haWwiOiJhNWxocDEuc3dpZnRAZ21haWwuY29tIiwiQWRkcmVzcyI6IlF14bqjbmcgTmluaCIsIkFjY291bnRUeXBlIjoibG9jYWwiLCJTdGF0dXMiOjEsIlJlZ2lzdGVyZWREYXRlIjoiMjAxOS0xMC0yOFQxMjozNzo1Ny43NzdaIiwiTGFzdExvZ2luRGF0ZSI6IjIwMTktMTAtMjhUMTg6MzQ6NDkuMTkwWiIsIlByb3ZpZGVySWQiOm51bGwsInJvbGVzIjpbeyJOYW1lIjoiQ3VzdG9tZXIifV19LCJpYXQiOjE1NzQ5NTczMTksImV4cCI6MTU3NDk2MDkxOX0.PQD8eGcaQpTYrNdZehRA-jSERRPzYNo3I3hrMv0uTdc",
+						"type": "text"
 					}
 				],
 				"body": {
@@ -571,28 +575,28 @@
 					"urlencoded": [
 						{
 							"key": "name",
-							"value": "Bee Shop",
+							"value": "Simple Love",
 							"description": "shop name",
 							"type": "text"
 						},
 						{
 							"key": "phone",
-							"value": "0902229182",
+							"value": "0989908651",
 							"type": "text"
 						},
 						{
 							"key": "email",
-							"value": "first_provider@gmail.com",
+							"value": "tran.thuong0920@gmail.com",
 							"type": "text"
 						},
 						{
 							"key": "address",
-							"value": "số 6/53/68 Cầu Giấy, Hà Nội",
+							"value": "số 42 Cồng Vồng, Đông Ngạc, Bắc Từ Liêm, Hà Nội",
 							"type": "text"
 						},
 						{
 							"key": "owner",
-							"value": "5",
+							"value": "1",
 							"description": "customer id",
 							"type": "text"
 						},
@@ -708,6 +712,166 @@
 						"provider",
 						"list-products",
 						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all catalog",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:6969/api/product/list-catalog",
+					"host": [
+						"localhost"
+					],
+					"port": "6969",
+					"path": [
+						"api",
+						"product",
+						"list-catalog"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create payment",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					},
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7IklkIjoyLCJOYW1lIjoiVHV54buBbiBMdWlzIiwiUGhvbmUiOiIwOTYzNTY2NzAzIiwiRW1haWwiOiJhNWxocC5zd2lmdEBnbWFpbC5jb20iLCJBZGRyZXNzIjoiUXXhuqNuZyBOaW5oIiwiQWNjb3VudFR5cGUiOiJsb2NhbCIsIlN0YXR1cyI6MSwiUmVnaXN0ZXJlZERhdGUiOiIyMDE5LTEwLTI4VDEyOjM4OjE2LjQyM1oiLCJMYXN0TG9naW5EYXRlIjoiMjAxOS0xMS0yOFQxMDozNToyNC42MzdaIiwiUHJvdmlkZXJJZCI6MSwicm9sZXMiOlt7Ik5hbWUiOiJTdXBwZXJBZG1pbiJ9LHsiTmFtZSI6IkFkbWluIn1dfSwiaWF0IjoxNTc0OTU2ODgzLCJleHAiOjE1NzQ5NjA0ODN9.aETZqCgukxGiCJsm5MDXgOfbbDytupwIwX8OzFzXrcM",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "amount",
+							"value": "100000",
+							"description": "Số tiền",
+							"type": "text"
+						},
+						{
+							"key": "bankCode",
+							"value": "NCB",
+							"type": "text"
+						},
+						{
+							"key": "language",
+							"value": "vn",
+							"type": "text"
+						},
+						{
+							"key": "orderType",
+							"value": "billpayment",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:6969/api/order/create-payment?amount=10000000",
+					"host": [
+						"localhost"
+					],
+					"port": "6969",
+					"path": [
+						"api",
+						"order",
+						"create-payment"
+					],
+					"query": [
+						{
+							"key": "amount",
+							"value": "10000000"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login v2",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"email\": \"a5lhp1.swift@gmail.com\",\n\t\"password\": \"123456Aa@\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://smartphone-store.herokuapp.com/api/auth/v2/login",
+					"protocol": "https",
+					"host": [
+						"smartphone-store",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"auth",
+						"v2",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Refresh Token",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"refreshToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7IklkIjoxLCJOYW1lIjoiVHV54buBbiBMdWlzIiwiUGhvbmUiOiIwOTYzNTY2NzAzIiwiRW1haWwiOiJhNWxocDEuc3dpZnRAZ21haWwuY29tIiwiQWRkcmVzcyI6IlF14bqjbmcgTmluaCIsIkFjY291bnRUeXBlIjoibG9jYWwiLCJTdGF0dXMiOjEsIlJlZ2lzdGVyZWREYXRlIjoiMjAxOS0xMC0yOFQxMjozNzo1Ny43NzdaIiwiTGFzdExvZ2luRGF0ZSI6IjIwMTktMTEtMjhUMTE6MTg6MTMuOTMzWiIsIlByb3ZpZGVySWQiOjIsInJvbGVzIjpbeyJOYW1lIjoiQWRtaW4ifSx7Ik5hbWUiOiJDdXN0b21lciJ9XX0sImlhdCI6MTU3NDk1ODIyOCwiZXhwIjoxODkwMzE4MjI4fQ.-1TjOlYiDCb_hea3lo8s__0gD6xYT18YW3WtFTpNp6Y\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:6969/api/auth/v2/refresh-token",
+					"host": [
+						"localhost"
+					],
+					"port": "6969",
+					"path": [
+						"api",
+						"auth",
+						"v2",
+						"refresh-token"
 					]
 				}
 			},
