@@ -20,6 +20,7 @@ const isAdmin = (req, res, next) => {
 }
 
 const isCustomer = (req, res, next) => {
+  console.log(req.user)
   let isSupperAdmin = req.user.roles.some(item => item.Name === config.ROLES.CUSTOMER)
   if (isSupperAdmin) {
     next()

@@ -65,8 +65,8 @@ const getVnPayReturn = async (req, res) => {
     vnpParams = ultilitiesService.sortObject(vnpParams)
 
     let secretKey = process.env.vnp_HashSecret
-    let signData = secretKey + querystring.stringify(vnpParams, { encode: false });
-    let checkSum = sha256(signData);
+    let signData = secretKey + querystring.stringify(vnpParams, { encode: false })
+    let checkSum = sha256(signData)
 
     if (secureHash === checkSum) {
       let orderDetail = {

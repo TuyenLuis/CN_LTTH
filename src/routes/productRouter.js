@@ -1,7 +1,7 @@
 import express from 'express'
 
 import productController from './../controllers/productController'
-import { isLoggedIn } from './../middlewares/authMiddleware'
+import { isLoggedIn, isAuth } from './../middlewares/authMiddleware'
 import { isCustomer, isAdmin, isSupperAdmin } from './../middlewares/checkRoleMiddleware'
 import { checkConnectDB } from './../middlewares/connectDbMiddleware'
 
@@ -12,13 +12,13 @@ productRouter.get('/list-product', checkConnectDB, productController.getListProd
 
 productRouter.get('/list-catalog', checkConnectDB, productController.getListCatalog)
 
-productRouter.post('/add-new-product', isLoggedIn, checkConnectDB, isAdmin, productController.addNewProduct)
+productRouter.post('/add-new-product', isAuth, checkConnectDB, isAdmin, productController.addNewProduct)
 
-productRouter.delete('/delete-product', isLoggedIn, checkConnectDB, isAdmin, productController.removeProduct)
+productRouter.delete('/delete-product', isAuth, checkConnectDB, isAdmin, productController.removeProduct)
 
-productRouter.put('/update-product-normal', isLoggedIn, checkConnectDB, isAdmin, productController.updateProductNormalData)
+productRouter.put('/update-product-normal', isAuth, checkConnectDB, isAdmin, productController.updateProductNormalData)
 
-productRouter.put('/update-product-extends', isLoggedIn, checkConnectDB, isAdmin, productController.updateProductExtendsData)
+productRouter.put('/update-product-extends', isAuth, checkConnectDB, isAdmin, productController.updateProductExtendsData)
 
 productRouter.get('/product-details/:productId', checkConnectDB, productController.getProductDetailsById)
 

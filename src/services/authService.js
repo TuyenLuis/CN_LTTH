@@ -33,6 +33,55 @@ const getCustomerInfo = (customerId, pool) => {
   })
 }
 
+const getCustomerByEmail = (pool, email) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      let userResult = await pool.request()
+        .input('Email', sql.VarChar(128), email)
+        .query(`
+          SELECT * FROM dbo.Customers WHERE Email = @Email
+        `)
+      resolve(userResult.recordset)
+    } catch (error) {
+      reject(error)
+    }
+  })
+}
+
+const saveToken = (pool, refreshToken, accessToken) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      let result = await pool.request()
+        .input('RefreshToken', sql.NVarChar, refreshToken)
+        .input('AccessToken', sql.NVarChar, accessToken)
+        .execute('prc_Insert_SaveToken')
+      resolve(result.recordset)
+    } catch (error) {
+      reject(error)
+    }
+  })
+}
+
+const getAllToken = pool => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      let result = await pool.request()
+        .query(`
+          SELECT RefreshToken, AccessToken FROM TokenLists
+        `)
+
+      let tokenList = {}
+      result.recordset.forEach(token => {
+        tokenList[token.RefreshToken] = token.AccessToken
+      })
+
+      resolve(tokenList)
+    } catch (error) {
+      reject(error)
+    }
+  })
+}
+
 const updateLastLoggedin = (customerId, pool) => {
   return new Promise(async (resolve, reject) => {
     try {
@@ -82,5 +131,8 @@ const register = ({email, name, password, phone, address}, pool) => {
 module.exports = {
   getCustomerInfo,
   register,
-  updateLastLoggedin
+  updateLastLoggedin,
+  getCustomerByEmail,
+  saveToken,
+  getAllToken
 }

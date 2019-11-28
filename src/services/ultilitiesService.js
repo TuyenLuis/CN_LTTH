@@ -1,4 +1,5 @@
 import bcrypt from 'bcrypt'
+import jwt from 'jsonwebtoken'
 
 const saltRounds = 7
 
@@ -27,5 +28,33 @@ module.exports = {
       sorted[a[key]] = obj[a[key]]
     }
     return sorted
+  },
+  generateToken: (user, secretSignature, tokenLife) => {
+    return new Promise((resolve, reject) => {
+      const userData = user
+      jwt.sign(
+        { data: userData },
+        secretSignature,
+        {
+          algorithm: "HS256",
+          expiresIn: tokenLife,
+        },
+        (error, token) => {
+          if (error) {
+            return reject(error)
+          }
+          resolve(token)
+        })
+    })
+  },
+  verifyToken: (token, secretKey) => {
+    return new Promise((resolve, reject) => {
+      jwt.verify(token, secretKey, (error, decoded) => {
+        if (error) {
+          return reject(error)
+        }
+        resolve(decoded)
+      })
+    })
   }
 }

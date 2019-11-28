@@ -16,7 +16,6 @@ const MssqlStore = mssqlStore(session)
 const config = app => {
   try {
     // await pool
-    // console.log(pool)
     app.use(session({
       key: process.env.SESSION_KEY,
       secret: process.env.SESSION_SECRET,
