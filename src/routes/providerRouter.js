@@ -15,4 +15,8 @@ providerRouter.post('/register-provider', isAuth, checkConnectDB, isCustomer, pr
 
 providerRouter.get('/list-products/:providerId', checkConnectDB, providerController.getListProductsByProvider)
 
+providerRouter.post('/accept-provider', isAuth, checkConnectDB, isSupperAdmin, providerController.acceptProvider)
+
+providerRouter.delete('/remove-provider', isAuth, checkConnectDB, isSupperAdmin, providerController.removeProvider)
+
 module.exports = providerRouter

@@ -8,8 +8,10 @@ import { saveOrderInfo } from './../middlewares/orderMiddleware'
 
 const orderRouter = express.Router()
 
-orderRouter.post('/create-payment', isAuth, checkConnectDB, saveOrderInfo, orderController.createPayment)
+orderRouter.post('/create-payment', isAuth, checkConnectDB, isCustomer, saveOrderInfo, orderController.createPayment)
 
-orderRouter.get('/vnpay-return', isAuth, checkConnectDB, orderController.getVnPayReturn)
+orderRouter.post('/create-order', isAuth, checkConnectDB, isCustomer, orderController.createBasicOrder)
+
+orderRouter.get('/vnpay-return', checkConnectDB, orderController.getVnPayReturn)
 
 module.exports = orderRouter

@@ -8,9 +8,10 @@ const saveOrder = (pool, orderDetail, orderItems) => {
     try {
       let orderResult = await pool.request()
         .input('CustomerId', sql.Int, orderDetail.customerId)
-        .input('ProviderId', sql.Int, orderDetail.providerId)
         .input('PaymentType', sql.NVarChar(250), orderDetail.paymentType)
         .input('ShipmentPrice', sql.Decimal(18, 2), orderDetail.shipmentPrice)
+        .input('CustomerAddress',sql.NVarChar(200), orderDetail.customerAddress)
+        .input('CustomerPhone',sql.VarChar(20), orderDetail.customerPhone)
         .output('OrderId', sql.Int)
         .execute('prc_Insert_AddNewOrder')
 
@@ -31,7 +32,10 @@ const saveOrder = (pool, orderDetail, orderItems) => {
             .execute('prc_Update_UpdateOrderPrice')
 
           if (updateOrderResult.output.Total) {
-            resolve(updateOrderResult.output.Total)
+            resolve({
+              totalPrice: updateOrderResult.output.Total,
+              orderId
+            })
           } else {
             reject(transError.add_order_details)
           }
@@ -44,16 +48,14 @@ const saveOrder = (pool, orderDetail, orderItems) => {
   })
 }
 
-const createTransaction = (pool, transactionDetail) => {
+const createTransaction = (pool, orderId) => {
   return new Promise(async (resolve, reject) => {
     try {
       let transResult = await pool.request()
-        .input('CustomerId', sql.Int, transactionDetail.customerId)
-        .input('ProviderId', sql.Int, transactionDetail.providerId)
-        .input('Price', sql.Decimal(18, 2), transactionDetail.price)
-        .input('Status', sql.NVarChar(250), transactionDetail.status)
+        .input('OrderId', sql.Int, orderId)
+        .execute('prc_Insert_AddNewTransaction')
 
-      resolve(transResult.recordset)
+      resolve(transResult)
     } catch (error) {
       reject(error)
     }

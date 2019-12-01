@@ -48,5 +48,7 @@ export const transSuccess = {
   add_product_success: 'Sản phẩm đã được thêm thành công',
   remove_product_success: 'Xóa sản phẩm thành công',
   update_product_success: 'Cập nhật sản phẩm thành công',
-  register_provider_success: 'Đăng ký bán hàng thành công'
+  register_provider_success: 'Đăng ký bán hàng thành công',
+  approve_provider: 'Đã cấp quyền bán hàng cho nhà cung cấp',
+  delete_provider: 'Đã xóa nhà cung cấp'
 }

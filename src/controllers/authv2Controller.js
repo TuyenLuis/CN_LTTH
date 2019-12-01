@@ -32,6 +32,7 @@ let login = async (req, res) => {
     await authService.saveToken(req.pool, refreshToken, accessToken)
 
     return res.status(200).send({
+      user,
       accessToken,
       refreshToken
     })

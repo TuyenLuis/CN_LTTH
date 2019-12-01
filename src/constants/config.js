@@ -23,6 +23,19 @@ module.exports = {
   BACKEND: {
     HOST: 'http://localhost:6969/'
   },
+  PROVIDER_STATUS: {
+    PENDING: 0,
+    APPROVED: 1,
+    DELETED: 2
+  },
+  TRANSACTION_STATUS: {
+    SUCCESS: 'Thành công',
+    FAIL: 'Thất bại'
+  },
+  PAYMENT_TYPE: {
+    AFTER_RECEIVE: 'Sau khi nhận hàng',
+    ATM: 'Chuyển khoản'
+  }
   // BACKEND: {
   //   HOST: 'https://'
   // }

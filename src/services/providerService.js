@@ -1,5 +1,6 @@
 import sql from 'mssql'
 import { transError } from './../constants/languageEn'
+import config from './../constants/config'
 
 const getListProviders = pool => {
   return new Promise(async (resolve, reject) => {
@@ -16,12 +17,48 @@ const getListProviders = pool => {
             C.Name AS 'OwnerName',
             C.Phone AS 'OwnerPhone',
             C.Email AS 'OwnerEmail',
-            C.[Address] AS 'OwnerAddress'
+            C.[Address] AS 'OwnerAddress',
+            P.[Status]
           FROM dbo.Providers P
           INNER JOIN dbo.Customers C ON C.Id = P.[Owner]
         `)
 
       resolve(providerResult.recordset)
+    } catch (error) {
+      reject(error)
+    }
+  })
+}
+
+
+const acceptProvider = (pool, providerId) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      let result = await pool.request()
+        .input('ProviderId', sql.Int, providerId)
+        .query(`
+          UPDATE Providers SET [Status] = ${config.PROVIDER_STATUS.APPROVED}
+          WHERE Id = @ProviderId
+        `)
+
+      resolve(result)
+    } catch (error) {
+      reject(error)
+    }
+  })
+}
+
+const removeProvider = (pool, providerId) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      let result = await pool.request()
+        .input('ProviderId', sql.Int, providerId)
+        .query(`
+          UPDATE Providers SET [Status] = ${config.PROVIDER_STATUS.DELETED}
+          WHERE Id = @ProviderId
+        `)
+
+      resolve(result)
     } catch (error) {
       reject(error)
     }
@@ -100,5 +137,7 @@ const getListProductsByProvider = (pool, providerId) => {
 module.exports = {
   getListProviders,
   registerProvider,
-  getListProductsByProvider
+  getListProductsByProvider,
+  acceptProvider,
+  removeProvider
 }

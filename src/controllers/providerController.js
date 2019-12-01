@@ -17,6 +17,28 @@ const getListProviders = async (req, res) => {
   }
 }
 
+const acceptProvider = async (req, res) => {
+  try {
+    await providerService.acceptProvider(req.pool, req.body.providerId)
+    return res.status(200).send({
+      message: transSuccess.approve_provider
+    })
+  } catch (err) {
+    return res.status(500).send({ err })
+  }
+}
+
+const removeProvider = async (req, res) => {
+  try {
+    await providerService.removeProvider(req.pool, req.body.providerId)
+    return res.status(200).send({
+      message: transSuccess.delete_provider
+    })
+  } catch (err) {
+    return res.status(500).send({ err })
+  }
+}
+
 const registerProvider = async (req, res) => {
   const errorArr = []
   const validationErrors = validationResult(req)
@@ -107,5 +129,7 @@ const getListProductsByProvider = async (req, res) => {
 module.exports = {
   getListProviders,
   registerProvider,
-  getListProductsByProvider
+  getListProductsByProvider,
+  acceptProvider,
+  removeProvider
 }

@@ -6,6 +6,8 @@ import config from './../constants/config'
 import ultilitiesService from './../services/ultilitiesService'
 import orderService from './../services/orderService'
 
+let transaction = {}
+
 const createPayment = (req, res) => {
   let ipAddr = req.headers['x-forwarded-for'] ||
     req.connection.remoteAddress ||
@@ -18,6 +20,8 @@ const createPayment = (req, res) => {
   let returnUrl = process.env.vnp_ReturnUrl
 
   let createDate = moment().format('YYYYMMDDhhmmss')
+  let utcTimeStamp = moment.utc().format('YYYYMMDDHHmmss')
+
   let orderId = moment().format('hhmmss')
   let amount = req.body.amount
   let bankCode = req.body.bankCode || config.VN_PAY_SANDBOX.BANK_CODE
@@ -51,6 +55,14 @@ const createPayment = (req, res) => {
   vnpParams['vnp_SecureHash'] = secureHash
   vnpUrl += '?' + querystring.stringify(vnpParams, { encode: true })
 
+  transaction[utcTimeStamp] = {
+    customerId: req.user.Id,
+    shipmentPrice: req.body.shipmentPrice || 0,
+    customerAddress: req.body.customerAddress,
+    customerPhone: req.body.customerPhone,
+    listProducts: req.body.listProducts
+  }
+
   res.status(200).send({ code: '00', data: vnpUrl })
 }
 
@@ -69,24 +81,23 @@ const getVnPayReturn = async (req, res) => {
     let checkSum = sha256(signData)
 
     if (secureHash === checkSum) {
+      const orderTime = vnpParams['vnp_OrderInfo'].slice(vnpParams['vnp_OrderInfo'].indexOf(': ') + 2)
+      const time = moment(orderTime).format('YYYYMMDDHHmmss')
+      const transactionDetail = transaction[time]
+
       let orderDetail = {
-        customerId: req.session.order.customerId,
-        providerId: req.session.order.providerId,
-        paymentType: 'Chuyển khoản',
-        shipmentPrice: req.session.order.shipmentPrice
+        customerId: transactionDetail.customerId,
+        paymentType: config.PAYMENT_TYPE.ATM,
+        shipmentPrice: transactionDetail.shipmentPrice,
+        customerAddress: transactionDetail.customerAddress,
+        customerPhone: transactionDetail.customerPhone
       }
-      let orderItems = req.session.order.listProducts
-      let totalPrice = await orderService.saveOrder(req.pool, orderDetail, orderItems)
+      let orderItems = transactionDetail.listProducts
+      let { orderId } = await orderService.saveOrder(req.pool, orderDetail, orderItems)
 
-      let transactionDetail = {
-        customerId: req.session.order.customerId,
-        providerId: req.session.order.providerId,
-        price: totalPrice,
-        status: 'Thành công',
-      }
-      await orderService.createTransaction(req.pool, transactionDetail)
+      await orderService.createTransaction(req.pool, orderId)
 
-      delete req.session.order
+      delete transaction[time]
       return res.status(200).send({ message: 'success' })
     } else {
       return res.status(500).send({ error })
@@ -96,7 +107,26 @@ const getVnPayReturn = async (req, res) => {
   }
 }
 
+const createBasicOrder = async (req, res) => {
+  try {
+    let orderDetail = {
+      customerId: req.user.Id,
+      paymentType: config.PAYMENT_TYPE.AFTER_RECEIVE,
+      shipmentPrice: req.body.shipmentPrice,
+      customerAddress: req.body.customerAddress,
+      customerPhone: req.body.customerPhone
+    }
+    let orderItems = req.body.listProducts
+    await orderService.saveOrder(req.pool, orderDetail, orderItems)
+
+    return res.status(200).send({ message: 'success' })
+  } catch (error) {
+    return res.status(500).send({ error })
+  }
+}
+
 module.exports = {
   createPayment,
-  getVnPayReturn
+  getVnPayReturn,
+  createBasicOrder
 }
